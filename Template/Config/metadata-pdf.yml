@@ -1,0 +1,28 @@
+---
+title:
+  - type: main
+    text: Bewerbung
+  - type: subtitle
+    text: André Lademann - Main Subtitle
+subject: "Consultant, Architect, Developer, Trainer"
+subtitle: "Consultant, Architect, Developer, Trainer"
+keywords:
+  - Bewerbung
+  - Consultant
+  - Architect
+  - Entwickler
+lang: "de"
+creator:
+  - role: author
+    text: André Lademann
+identifier:
+  - scheme: DOI
+    text: doi:10.234234.234/33
+author:
+  - André Lademann
+
+belongs-to-collection: alaresume
+description: Bewerbungsunterlagen
+publisher:  VGBLN
+date: 2022-11-11
+rights: © 2022 John Smith, CC BY-NC

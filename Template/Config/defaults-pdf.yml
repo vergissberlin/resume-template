@@ -1,0 +1,38 @@
+template: eisvogel
+pdf-engine: lualatex
+data-dir: /opt/pandoc
+listings: true
+dpi: 300
+toc: true
+toc-depth: 2
+columns: 2
+from: markdown
+to: pdf
+variables:
+  lang: de
+  titlepage: true
+  titlepage-color: 'eeeeee'
+  titlepage-text-color: 'ffffff'
+  titlepage-rule-color: '333333'
+  titlepage-rule-height: 0
+  titlepage-background: 'Template/Backgrounds/background1.pdf'
+  page-background: 'Template/Backgrounds/background1.pdf'
+  fontsize: 10pt
+  book: false
+  toc-own-page: true
+  footnotes-pretty: true
+  table-use-row-colors: true
+  table-row-color: '22FFFF'
+  table-row-height: 142pt
+  table-column-color: '22FF33'
+  header-includes:
+    - \hypersetup{
+      colorlinks=true,
+      allbordercolors={0 0 0},
+      pdfborderstyle={/S/U/W 1},
+      linkbordercolor=red,
+      linkcolor=cyan,
+      citecolor=gray,
+      filecolor=pink,
+      urlcolor=cyan,
+      pagebackref=true}

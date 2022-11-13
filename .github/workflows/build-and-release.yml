@@ -1,0 +1,106 @@
+name: Build resume and publish it on GitHub releases
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    name: release – ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    needs:
+      - build-pdf
+      - build-epub
+    steps:
+      - name: Step 1.1 Download pdf artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: resume-pdf
+          path: resume-pdf
+      - name: Step 1.2 Download epub artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: resume-epub
+          path: resume-epub
+      - name: Step 2. Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            #### Changes in this Release
+
+            - ${{ github.event.head_commit.message }}
+
+            #### Download
+            | PDF | EPUB |
+            | --- | ---- |
+            | <img width="144" src="https://cdn.githubraw.com/vergissberlin/resume-test/main/Media/Cover/Cover-3.png" alt="Cover for pdf" />  | <img width="144" src="https://cdn.githubraw.com/vergissberlin/resume-test/main/Media/Cover/Cover-3-epub.png" alt="Cover for epub" /> |
+            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/vergissberlin/resume-test/releases/download/${{ github.ref_name }}/resume.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/vergissberlin/resume-test/releases/download/${{ github.ref_name }}/resume.epub) |
+
+          draft: false
+          prerelease: false
+      - name: Step 3.1 Upload PDF Release Asset
+        id: upload-release-asset-pdf
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./resume-pdf/resume.pdf
+          asset_name: resume.pdf
+          asset_content_type: application/pdf
+      - name: Step 3.2 Upload EPUB Release Asset
+        id: upload-release-asset-epub
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./resume-epub/resume.epub
+          asset_name: resume.epub
+          asset_content_type: application/epub
+
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout sources
+        uses: actions/checkout@v2
+      - name: Step 2 - Create a temporary artifact resume-pdf folder
+        run: |
+          mkdir -p resume-pdf
+      - name: Step 3 - Use docker source to build artifacts and publish to the temp folder
+        uses: docker://ghcr.io/vergissberlin/pandoc-eisvogel-de
+        with:
+          args: 'Content/1-cv.md -o resume-pdf/resume.pdf --defaults Config/defaults-pdf.yml --metadata-file Config/metadata-pdf.yml'
+      - name: Step 4 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf
+          path: resume-pdf
+          if-no-files-found: error
+          retention-days: 12
+
+  build-epub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout sources
+        uses: actions/checkout@v2
+      - name: Step 2 - Create a temporary artifact resume folder
+        run: |
+          mkdir -p resume-epub
+      - name: Step 3 - Use docker source to build artifacts and publish to the temp folder
+        uses: docker://ghcr.io/vergissberlin/pandoc-eisvogel-de
+        with:
+          args: 'Content/1-cv.md -o resume-epub/resume.epub --defaults Config/defaults-epub.yml --metadata-file Config/metadata-defaults-epub.yml'
+      - name: Step 4 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-epub
+          path: resume-epub
+          if-no-files-found: error
+          retention-days: 12
