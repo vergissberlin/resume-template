@@ -1,28 +1,26 @@
 ---
 title:
   - type: main
-    text: Bewerbung
+    text: Resume
   - type: subtitle
-    text: André Lademann - Main Subtitle
+    text: Johanna Doe
 subject: "Consultant, Architect, Developer, Trainer"
-subtitle: "Consultant, Architect, Developer, Trainer"
 keywords:
-  - Bewerbung
+  - Resume
   - Consultant
   - Architect
-  - Entwickler
-lang: "de"
+  - Developer
+lang: "en"
 creator:
   - role: author
-    text: André Lademann
+    text: Johanna Doe
 identifier:
   - scheme: DOI
     text: doi:10.234234.234/33
 author:
-  - André Lademann
+  - Johanna Doe
 
-belongs-to-collection: alaresume
-description: Bewerbungsunterlagen
-publisher:  VGBLN
-date: 2022-11-11
-rights: © 2022 John Smith, CC BY-NC
+belongs-to-collection: resume
+description: Application document for Johanna Doe
+publisher:  vergissberlin
+rights: © 2022 Johanna Doe, CC BY-NC

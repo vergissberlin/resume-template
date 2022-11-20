@@ -13,6 +13,8 @@ jobs:
       - build-pdf
       - build-epub
     steps:
+      - name: Step 0.1 Show envs
+        run: env
       - name: Step 1.1 Download pdf artifact
         uses: actions/download-artifact@v2
         with:
@@ -39,8 +41,8 @@ jobs:
             #### Download
             | PDF | EPUB |
             | --- | ---- |
-            | <img width="144" src="https://cdn.githubraw.com/${{env.GITHUB_REPOSITORY}}/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" />  | <img width="144" src="https://cdn.githubraw.com/${{env.GITHUB_REPOSITORY}}/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /> |
-            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{env.GITHUB_REPOSITORY}}/releases/download/${{ github.ref_name }}/resume.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{env.GITHUB_REPOSITORY}}/releases/download/${{ github.ref_name }}/resume.epub) |
+            | <img width="144" src="https://cdn.githubraw.com/${{ GITHUB_REPOSITORY }}/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" />  | <img width="144" src="https://cdn.githubraw.com/${{ GITHUB_REPOSITORY }}/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /> |
+            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ GITHUB_REPOSITORY }}/releases/download/${{ github.ref_name }}/resume.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ GITHUB_REPOSITORY }}/releases/download/${{ github.ref_name }}/resume.epub) |
 
           draft: false
           prerelease: false
@@ -76,7 +78,7 @@ jobs:
       - name: Step 3 - Use docker source to build artifacts and publish to the temp folder
         uses: docker://ghcr.io/vergissberlin/pandoc-eisvogel-de
         with:
-          args: 'Content/1-cv.md -o resume-pdf/resume.pdf --defaults Template/Config/defaults-pdf.yml --metadata-file Template/Config/metadata-pdf.yml'
+          args: 'Content/1-curriculum-vitae.md -o resume-pdf/resume.pdf --defaults Template/Config/defaults-pdf.yml --metadata-file Template/Config/metadata-pdf.yml'
       - name: Step 4 - Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v3
         with:
@@ -96,7 +98,7 @@ jobs:
       - name: Step 3 - Use docker source to build artifacts and publish to the temp folder
         uses: docker://ghcr.io/vergissberlin/pandoc-eisvogel-de
         with:
-          args: 'Content/1-cv.md -o resume-epub/resume.epub --defaults Template/Config/defaults-epub.yml --metadata-file Template/Config/metadata-epub.yml'
+          args: 'Content/1-curriculum-vitae.md -o resume-epub/resume.epub --defaults Template/Config/defaults-epub.yml --metadata-file Template/Config/metadata-epub.yml'
       - name: Step 4 - Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v3
         with:

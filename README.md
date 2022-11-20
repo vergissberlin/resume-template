@@ -13,7 +13,7 @@
 | English                                      | Download                                                         | 
 |----------------------------------------------|------------------------------------------------------------------|
 | [📄 Introduction](Content/0-introduction.md) | [📄 PDF](https://github.com/example/resume-test/releases/latest) |
-| [📄 Curriculum Vitae](Content/1-cv.md)       | [📄 PDF](https://github.com/example/resume-test/releases/latest) |
+| [📄 Curriculum Vitae](Content/1-curriculum-vitae.md)       | [📄 PDF](https://github.com/example/resume-test/releases/latest) |
 | [📄 Profile](Content/2-portfolio.md)         | [📄 PDF](https://github.com/example/resume-test/releases/latest) |
 | [📄 Contact](Content/3-contact.md)           | [📄 PDF](https://github.com/example/resume-test/releases/latest) |
 

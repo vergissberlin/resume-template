@@ -1,6 +1,6 @@
 # Introduction – REPLACE_NAME
 
-> [Introduction](./0-introduction.md) | [CV](./1-cv.md) | [Portfolio](./3-portfolio.md) | [Contact](4-contact.md)
+> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./3-portfolio.md) | [Contact](4-contact.md)
 
 ![$REPLACE_NAME width=200](Media/avatar.svg)
 REPLACE_NAME
@@ -57,4 +57,4 @@ JavaScript, Load testing, Usability, Accessibility, VueJS, Docker, Node JS, Perf
 Semantic Web, RDF
 
 > **⚠️ Please note** that this is not a complete list of all my skills.
-> Take a look at my [CV](./1-cv.md) and [portfolio](./3-portfolio.md) for more information.
+> Take a look at my [CV](./1-curriculum-vitae.md) and [portfolio](./3-portfolio.md) for more information.

@@ -23,7 +23,9 @@ document_date_year=$(date +%Y)
 document_git_tag=$(git describe --tags --abbrev=0)
 
 # Load dot env file with variables
-export $(grep -v '^#' .env | xargs)
+set -a
+source .env
+set +a
 
 
 ################################################################################
@@ -36,7 +38,6 @@ else
 	sedcmd="sed -i ''"
 fi
 
-
 ################################################################################
 ## Requirement
 ################################################################################
@@ -46,6 +47,7 @@ if ! [ -x "$(command -v docker)" ]; then
   echo "🚨\tDocker is not installed. Please install Docker!"
   exit 1
 fi
+
 # Check if Docker is running
 if ! docker info > /dev/null 2>&1; then
   echo "🚨\tDocker is not running. Please start Docker!"
@@ -93,10 +95,10 @@ for file in Temp/*.md; do
 done
 
 # Delete files in temporary directory which are not Markdown files
-find Temp -type f ! -name '*.md' -delete
+find Temp -type f -name '*.md"' -delete
 
 ################################################################################
-## Generate Documents
+## Generate Multiple Documents
 ################################################################################
 
 ## Generate separate PDF files for each Markdown file in the content directory
@@ -111,41 +113,67 @@ for file in Temp/*.md; do
     filename="${filename%.*}"
     # Strip leading numbers and following dash from filename
     filename=$(echo $filename | sed 's/^[0-9]-*//')
-    # Generate title from filename with first letter uppercase
-    title="$(tr '[:lower:]' '[:upper:]' <<< ${filename:0:1})${filename:1}"
-    echo "👉\tBuild PDF for \"${title}\""
+
+    # Get the headline from the Markdown file
+    title=$(grep -m 1 '^# ' $file | sed 's/# //')
+
+    echo "👉\tBuild single PDF for \"${title}\""
     docker run -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de ${file} \
-      -o Results/${FILENAME}-${filename}.pdf \
+      -o Results/${RESUME_FILENAME}-${filename}.pdf \
       --defaults Template/Config/defaults-pdf-single.yml \
       --metadata-file Template/Config/metadata-pdf.yml \
       -V title="${title}" \
-      -V author="$AUTHOR" \
+      -V author="${RESUME_AUTHOR}" \
+      -V subject="${RESUME_SUBJECT}" \
       -V footer-center="v$document_git_tag" \
       -V date="$document_date";
   fi
 done
 
+################################################################################
+## Generate PDF with combined content
+################################################################################
+
+echo "\n✅\tGenerate PDF with combined content"
+
+# Remove the temporary directory containing the Markdown files
+rm -rf Temp/*.md
+
+# Combine all Markdown files in the content directory into a single Markdown file
+echo "👉\tCombine all Markdown files into a single Markdown file"
+cat Content/*.md > Temp/combined.md
+
+# Filter and replace characters in the single Markdown file
+echo "👉\tFilter and replace characters in single Markdown file"
+sh Scripts/filter.sh Temp/combined.md
+
 # Generate a single PDF file from all Markdown files in the content directory
-echo "\n✅\tGenerate documents for combined documents"
 echo "👉\tGenerate PDF for all files"
 cat Temp/*.md | docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de \
-  -o Results/resume-${FILENAME}.pdf \
+  -o Results/resume-${RESUME_FILENAME}.pdf \
   --defaults Template/Config/defaults-pdf.yml \
   --metadata-file Template/Config/metadata-pdf.yml \
-  -V author="$AUTHOR" \
-  -V description="Resume by ${AUTHOR}" \
-  -V rights="© ${document_date_year} ${NAME}, CC BY-NC" \
+  -V title="${RESUME_NAME}" \
+  -V subtitle="Resume" \
+  -V subject="${RESUME_SUBJECT}" \
+  -V lang="en" \
+  -V author="${RESUME_AUTHOR}" \
+  -V description="Resume by ${RESUME_AUTHOR}" \
+  -V rights="© ${document_date_year} ${RESUME_NAME}, ${RESUME_LICENSE}" \
   -V date="$document_date";
 
 # Generate a singe epub file from all Markdown files in the content directory
 echo "👉\tGenerate EPUB for all files"
 cat Temp/*.md | docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de \
-  -o Results/resume-${FILENAME}.epub \
+  -o Results/resume-${RESUME_FILENAME}.epub \
   --defaults Template/Config/defaults-epub.yml \
   --metadata-file Template/Config/metadata-epub.yml \
-  -V author="Author: ${AUTHOR}" \
-  -V description="Resume by ${AUTHOR}" \
-  -V rights="© ${document_date_year} ${NAME}, CC BY-NC" \
+  -V title="${RESUME_NAME}" \
+  -V subtitle="Resume" \
+  -V subject="${RESUME_SUBJECT}" \
+  -V author="Author: ${RESUME_AUTHOR}" \
+  -V description="Resume by ${RESUME_AUTHOR}" \
+  -V rights="© ${document_date_year} ${RESUME_NAME}, ${RESUME_LICENSE}" \
   -V ibooks.version="$document_git_tag" \
   -V date="$document_date";
 

@@ -20,7 +20,7 @@ fi
 ################################################################################
 
 # Add "\pagebreak" before each heading 1
-function addPageBreaks() {
+addPageBreaks() {
     echo $(cat)
-    $sedcmd 's/^# /\\pagebreak\n# AAA/g' $1
+    $sedcmd 's/^# /\\pagebreak\\n# /g' $1
 }
