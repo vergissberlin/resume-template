@@ -1,9 +1,9 @@
-# Introduction – REPLACE_NAME
+# Introduction
 
-> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./3-portfolio.md) | [Contact](4-contact.md)
+> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./2-portfolio.md) | [Contact](3-contact.md)
 
 ![$REPLACE_NAME width=200](Media/avatar.svg)
-REPLACE_NAME
+_REPLACE_NAME_
 
 A resume is like a [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction), you never know until you really inspect it!
 
@@ -57,4 +57,4 @@ JavaScript, Load testing, Usability, Accessibility, VueJS, Docker, Node JS, Perf
 Semantic Web, RDF
 
 > **⚠️ Please note** that this is not a complete list of all my skills.
-> Take a look at my [CV](./1-curriculum-vitae.md) and [portfolio](./3-portfolio.md) for more information.
+> Take a look at my [CV](./1-curriculum-vitae.md) and [portfolio](./2-portfolio.md) for more information.

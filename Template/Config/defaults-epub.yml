@@ -3,12 +3,7 @@ from: markdown
 listings: true
 dpi: 75
 variables:
-  lang: de
-  titlepage-text-color: "00aaaa"
-  titlepage-rule-color: "aa00aa"
-  titlepage-rule-height: 0
-  titlepage-background: "Template/Backgrounds/background2.pdf"
-  page-background: "Template/Backgrounds/background2.pdf"
+  lang: en
   fontsize: 10pt
   toc-own-page: true
   footnotes-pretty: true

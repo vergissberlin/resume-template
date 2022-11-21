@@ -1,6 +1,6 @@
-# Portfolio – REPLACE_NAME
+# Portfolio
 
-> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./3-portfolio.md) | [Contact](4-contact.md)
+> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./2-portfolio.md) | [Contact](3-contact.md)
 
 ## Table of projects
 
@@ -42,7 +42,7 @@ magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,[fastif
 | [OpenAPI][openapi]    | REST API generation and documentation         |
 | [Heroku][heroku]      | Deployment pipeline for a REST API            |
 
-| Description               | Links                                                            | 
+| Description               | Links                                                            |
 |---------------------------|------------------------------------------------------------------|
 | App                       | <https://kita-tagesplaner.onrender.com>                          |
 | App Repository            | <https://github.com/NULLzuEINS/kindergarten-day-planner-app>     |
@@ -80,6 +80,7 @@ quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blan
 | App                       | <https://example.onrender.com>       |
 | App Repository            | <https://github.com/example/project> | 
 
+## Development
 
 ### [[↑](#table-of-projects)] Example 3
 
@@ -113,15 +114,16 @@ quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blan
 | App Repository            | <https://github.com/example/project> | 
 
 
-## [[↑](#table-of-projects)] Further projects
+## Further projects
 
 … I am proud of
 
-| Projekt                                                                                |                                                   |
-|:---------------------------------------------------------------------------------------|:--------------------------------------------------|
+### [[↑](#table-of-projects)] Development
+
+| Projekt                                                                          |                                                   |
+|:---------------------------------------------------------------------------------|:--------------------------------------------------|
 | [Node-RED mjml ↗](https://flows.nodered.org/node/@example/node-red-contrib-mjml) | Node-RED node zur Gestaltung von E-Mail templates |
 | [Node-RED say ↗](https://flows.nodered.org/node/@example/node-red-contrib-say)   | Node-RED node zur Ausgabe von Sprachnachrichten   |
-
 
 [apollojs]: https://www.apollographql.com/
 

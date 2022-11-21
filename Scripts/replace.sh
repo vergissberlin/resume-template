@@ -36,13 +36,13 @@ $sedcmd "s/REPLACE_DATE/$document_date/g" $1
 $sedcmd "s/REPLACE_VERSION/v$CI_COMMIT_REF_NAME/g" $1
 
 # Replace path to images
-$sedcmd 's/Media/Content\/Media/g' $1
+$sedcmd 's/Media\//Temp\/Media\//g' $1
 
-# Replace NAME and escape spaces
+# Replace RESUME_NAME and escape spaces
 $sedcmd "s/REPLACE_NAME/$(echo $RESUME_NAME | sed 's/ /\\ /g')/g" $1
 
-# Replace USERNAME
+# Replace RESUME_USERNAME
 $sedcmd "s/REPLACE_USERNAME/$RESUME_USERNAME/g" $1
 
-# Add "\pagebreak" in the line before each heading 1
-sed -i '' $'s/^# /\\\pagebreak\\\n# /g' $1
+# Add "\newpage" in the line before each heading 1
+sed -i '' $'s/^# /\\\n\\\newpage\\\n\\\n# /g' $1

@@ -35,6 +35,8 @@ $sedcmd 's/\-\ \Lebenslauf\ \[PDF\ CV//g' $1
 
 # Remove top links from headers
 $sedcmd 's/\[\[↑\]\(\#.*\)\]\ //g' $1
+
+# Remove top links from headers
 $sedcmd 's/\#\-/#/g' $1
 
 # Remove crosses from headers

@@ -137,7 +137,7 @@ done
 echo "\n✅\tGenerate PDF with combined content"
 
 # Remove the temporary directory containing the Markdown files
-rm -rf Temp/*.md
+# rm -rf "Temp/*.md*"
 
 # Combine all Markdown files in the content directory into a single Markdown file
 echo "👉\tCombine all Markdown files into a single Markdown file"
@@ -147,9 +147,13 @@ cat Content/*.md > Temp/combined.md
 echo "👉\tFilter and replace characters in single Markdown file"
 sh Scripts/filter.sh Temp/combined.md
 
+## Replace some characters in the single Markdown file which are not supported by Pandoc
+echo "👉\tReplace characters in single Markdown file"
+sh Scripts/replace.sh Temp/combined.md
+
 # Generate a single PDF file from all Markdown files in the content directory
 echo "👉\tGenerate PDF for all files"
-cat Temp/*.md | docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de \
+docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de \
   -o Results/resume-${RESUME_FILENAME}.pdf \
   --defaults Template/Config/defaults-pdf.yml \
   --metadata-file Template/Config/metadata-pdf.yml \
@@ -160,11 +164,12 @@ cat Temp/*.md | docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvoge
   -V author="${RESUME_AUTHOR}" \
   -V description="Resume by ${RESUME_AUTHOR}" \
   -V rights="© ${document_date_year} ${RESUME_NAME}, ${RESUME_LICENSE}" \
-  -V date="$document_date";
+  -V date="$document_date" \
+  Temp/combined.md;
 
 # Generate a singe epub file from all Markdown files in the content directory
 echo "👉\tGenerate EPUB for all files"
-cat Temp/*.md | docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de \
+docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvogel-de \
   -o Results/resume-${RESUME_FILENAME}.epub \
   --defaults Template/Config/defaults-epub.yml \
   --metadata-file Template/Config/metadata-epub.yml \
@@ -172,10 +177,12 @@ cat Temp/*.md | docker run -i -v $PWD:/data ghcr.io/vergissberlin/pandoc-eisvoge
   -V subtitle="Resume" \
   -V subject="${RESUME_SUBJECT}" \
   -V author="Author: ${RESUME_AUTHOR}" \
+  -V titlepage-logo="Content/Media/avatar.svg" \
   -V description="Resume by ${RESUME_AUTHOR}" \
   -V rights="© ${document_date_year} ${RESUME_NAME}, ${RESUME_LICENSE}" \
   -V ibooks.version="$document_git_tag" \
-  -V date="$document_date";
+  -V date="$document_date" \
+  Temp/combined.md;
 
 
 ################################################################################

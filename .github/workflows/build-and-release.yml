@@ -13,8 +13,6 @@ jobs:
       - build-pdf
       - build-epub
     steps:
-      - name: Step 0.1 Show envs
-        run: env
       - name: Step 1.1 Download pdf artifact
         uses: actions/download-artifact@v2
         with:
@@ -39,10 +37,11 @@ jobs:
             - ${{ github.event.head_commit.message }}
 
             #### Download
+
             | PDF | EPUB |
             | --- | ---- |
-            | <img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" />  | <img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /> |
-            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume.epub) |
+            | <img width="144" src="https://cdn.githubraw.com/vergissberlin/resume-test/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" />  | <img width="144" src="https://cdn.githubraw.com/vergissberlin/resume-test/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /> |
+            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/vergissberlin/resume-test/releases/download/${{ github.ref_name }}/resume.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/vergissberlin/resume-test/releases/download/${{ github.ref_name }}/resume.epub) |
 
           draft: false
           prerelease: false

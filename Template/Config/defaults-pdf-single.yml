@@ -7,7 +7,7 @@ toc: false
 from: markdown
 to: pdf
 variables:
-  lang: de
+  lang: en
   titlepage: false
   page-background: 'Template/Backgrounds/background1.pdf'
   fontsize: 10pt

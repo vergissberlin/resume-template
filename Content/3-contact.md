@@ -1,6 +1,6 @@
-# Contact – REPLACE_NAME
+# Contact
 
-> [Introduction](0-introduction.md) | [CV](1-curriculum-vitae.md) | [Portfolio](3-portfolio.md) | [Contact](4-contact.md)
+> [Introduction](0-introduction.md) | [CV](1-curriculum-vitae.md) | [Portfolio](2-portfolio.md) | [Contact](3-contact.md)
 
 ## Contact
 

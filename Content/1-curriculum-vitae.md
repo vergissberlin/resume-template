@@ -1,6 +1,6 @@
-# Curriculum vitae – REPLACE_NAME
+# Curriculum vitae
 
-> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./3-portfolio.md) | [Contact](4-contact.md)
+> [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./2-portfolio.md) | [Contact](3-contact.md)
 
 [![PDF Download CV](https://img.shields.io/github/downloads/vergissberlin/resume/total?label=PDF%20download%20curriculum%20vitae%20&logo=Curriculum%20vitae%20download&style=flat-square)](https://github.com/vergissberlin/resume/releases/latest/)
 

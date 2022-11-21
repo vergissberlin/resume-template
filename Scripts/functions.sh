@@ -22,5 +22,5 @@ fi
 # Add "\pagebreak" before each heading 1
 addPageBreaks() {
     echo $(cat)
-    $sedcmd 's/^# /\\pagebreak\\n# /g' $1
+    $sedcmd 's/^# /\\pagebreak\\n\\n# /g' $1
 }
