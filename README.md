@@ -10,12 +10,35 @@
 
 ## Documents
 
-| View                                                 | Download                                                             | 
-|------------------------------------------------------|----------------------------------------------------------------------|
+| View                                                 | Download                                                                   |
+|------------------------------------------------------|----------------------------------------------------------------------------|
 | [📄 Introduction](Content/0-introduction.md)         | [📄 PDF](https://github.com/vergissberlin/resume-template/releases/latest) |
 | [📄 Curriculum Vitae](Content/1-curriculum-vitae.md) | [📄 PDF](https://github.com/vergissberlin/resume-template/releases/latest) |
 | [📄 Profile](Content/2-portfolio.md)                 | [📄 PDF](https://github.com/vergissberlin/resume-template/releases/latest) |
 | [📄 Contact](Content/3-contact.md)                   | [📄 PDF](https://github.com/vergissberlin/resume-template/releases/latest) |
+
+---
+
+## Usage
+
+There are to different types how to use this generator with different requirements.
+
+**But first do following steps:**
+1. Create a new repository from this template
+2. Make your changes in the `Content` folder
+
+**Now you have two options:**
+1. Use the GitHub Actions to generate your resume automatically
+   1. Push your changes to GitHub `git push`
+   2. Set a tag to trigger the GitHub Actions `git tag 1.0.0` and `git push --tags`
+   3. Download the generated files from your releases page
+2. Use the Docker image to generate your resume locally
+   1. Install [Docker](https://docs.docker.com/get-docker/)
+   2. Run ``/Scripts/build.sh`` to generate the resume as PDF and EPUB
+   3. The generated files are in the `Results` folder
+
+**The Process should look like this:**
+![The Process should look like this](Template/Documentation/cli.png)
 
 ---
 
