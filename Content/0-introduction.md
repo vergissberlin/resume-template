@@ -2,8 +2,7 @@
 
 > [Introduction](./0-introduction.md) | [CV](./1-curriculum-vitae.md) | [Portfolio](./2-portfolio.md) | [Contact](3-contact.md)
 
-![$REPLACE_NAME width=200](Media/avatar.svg)
-_REPLACE_NAME_
+![REPLACE_NAME](Media/avatar.svg){width: "42%"}
 
 A resume is like a [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction), you never know until you really inspect it!
 
