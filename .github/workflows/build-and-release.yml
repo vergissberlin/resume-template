@@ -2,16 +2,17 @@ name: Build resume and publish it on GitHub releases
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
+    #tags:
+    #  - '*'
 
 jobs:
   release:
     name: release – ${{ github.ref_name }}
     runs-on: ubuntu-latest
     needs:
-      - build-pdf
-      - build-epub
+      - build
     steps:
       - name: Step 1.1 Download pdf artifact
         uses: actions/download-artifact@v2
