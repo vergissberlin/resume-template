@@ -35,7 +35,7 @@ jobs:
       - name: Step 4.2 - Upload the single PDF CV artifact
         uses: actions/upload-artifact@v3
         with:
-          name: resume-pdf-cv
+          name: resume-pdf-curriculum-vitae
           path: Results/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf
           if-no-files-found: error
           retention-days: 12
