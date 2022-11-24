@@ -2,10 +2,8 @@ name: Build resume and publish it on GitHub releases
 
 on:
   push:
-    branches:
-      - main
-    #tags:
-    #  - '*'
+    tags:
+      - '*'
 
 jobs:
 
