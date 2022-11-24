@@ -137,7 +137,7 @@ done
 echo "\n✅\tGenerate PDF with combined content"
 
 # Remove the temporary directory containing the Markdown files
-# rm -rf "Temp/*.md*"
+rm -rf "Temp/*.md*"
 
 # Combine all Markdown files in the content directory into a single Markdown file
 echo "👉\tCombine all Markdown files into a single Markdown file"

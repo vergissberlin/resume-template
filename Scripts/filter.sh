@@ -49,6 +49,3 @@ $sedcmd '/^$/N;/^\n$/D' $1
 # Remove unsupported characters
 $sedcmd 's/↗//g' $1
 $sedcmd 's/⚠️ //g' $1
-
-# Remove wired file
-rm "$1''"

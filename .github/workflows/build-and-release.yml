@@ -8,6 +8,60 @@ on:
     #  - '*'
 
 jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout sources
+        uses: actions/checkout@v2
+      - name: Step 2 - Read dotenv vars
+        uses: xom9ikk/dotenv@v2
+      - name: Step 4 - Create temporary folders
+        run: |
+          mkdir -p Results
+          mkdir -p Temp
+      - name: Step 4 - Generate the documents using Docker
+        run: |
+          ./Scripts/build.sh
+          ls -lisah Results
+
+      - name: Step 5.1 - Upload the single PDF Introduction artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf-introduction
+          path: Results/${{ env.RESUME_FILENAME }}-introduction.pdf
+          if-no-files-found: error
+          retention-days: 12
+      - name: Step 5.2 - Upload the single PDF CV artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf-cv
+          path: Results/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf
+          if-no-files-found: error
+          retention-days: 12
+      - name: Step 5.3 - Upload the single PDF Portfolio artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf-portfolio
+          path: Results/portfolio.pdf
+          if-no-files-found: error
+          retention-days: 12
+
+      - name: Step 6.1 - Upload the PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf
+          path: Results/resume-${{ env.RESUME_FILENAME }}.pdf
+          if-no-files-found: error
+          retention-days: 12
+      - name: Step 6.2 - Upload the EPUB artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-epub
+          path: Results/resume-${{ env.RESUME_FILENAME }}.epub
+          if-no-files-found: error
+          retention-days: 12
+
   release:
     name: release – ${{ github.ref_name }}
     runs-on: ubuntu-latest
@@ -41,16 +95,16 @@ jobs:
 
             | PDF | EPUB |
             | --- | ---- |
-            | <a href="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume.pdf"><img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" /></a> | <a href="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume.epub"><img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /></a> |
-            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume.epub) |
+            | <a href="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.pdf"><img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" /></a> | <a href="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.epub"><img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /></a> |
+            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.epub) |
             
             ##### Download single files
 
             | Document     | Download |
             | ------------ | ---- |
-            | Introduction | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/introduction.pdf) | 
-            | CV | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/curriculum-vitae.pdf) | 
-            | Portfolio | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/portfolio.pdf) |
+            | Introduction | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-introduction.pdf) | 
+            | CV | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf) | 
+            | Portfolio | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-portfolio.pdf) |
           draft: false
           prerelease: false
 
@@ -61,7 +115,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf-introduction/introduction.pdf
+          asset_path: ./resume-pdf-introduction/${{ env.RESUME_FILENAME }}-introduction.pdf
           asset_name: introduction.pdf
           asset_content_type: application/pdf
       - name: Step 3.2 Upload CV PDF Release Asset
@@ -71,7 +125,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf-curriculum-vitae/curriculum-vitae.pdf
+          asset_path: ./resume-pdf-curriculum-vitae/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf
           asset_name: curriculum-vitae.pdf
           asset_content_type: application/pdf
       - name: Step 3.3 Upload Portfolio PDF Release Asset
@@ -81,10 +135,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf-portfolio/portfolio.pdf
+          asset_path: ./resume-pdf-portfolio/${{ env.RESUME_FILENAME }}-portfolio.pdf
           asset_name: portfolio.pdf
           asset_content_type: application/pdf
-
 
       - name: Step 4.1 Upload PDF Release Asset
         id: upload-release-asset-pdf
@@ -93,8 +146,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf/resume.pdf
-          asset_name: resume.pdf
+          asset_path: ./resume-pdf/resume-${{ env.RESUME_FILENAME }}.pdf
+          asset_name: resume-${{ env.RESUME_FILENAME }}.pdf
           asset_content_type: application/pdf
       - name: Step 4.2 Upload EPUB Release Asset
         id: upload-release-asset-epub
@@ -103,59 +156,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-epub/resume.epub
-          asset_name: resume.epub
+          asset_path: ./resume-epub/resume-${{ env.RESUME_FILENAME }}.epub
+          asset_name: resume-${{ env.RESUME_FILENAME }}.epub
           asset_content_type: application/epub
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step 1 - Checkout sources
-        uses: actions/checkout@v2
-      - name: Step 2 - Read dotenv vars
-        uses: xom9ikk/dotenv@v2
-      - name: Step 4 - Create temporary folders
-        run: |
-          mkdir -p Results
-          mkdir -p Temp
-      - name: Step 4 - Generate the documents using Docker
-        run: |
-          ./Scripts/build.sh
-          ls -lisah Results
-
-      - name: Step 5.1 - Upload the single PDF Introduction artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: resume-pdf-introduction
-          path: Results/introduction.pdf
-          if-no-files-found: error
-          retention-days: 12
-      - name: Step 5.2 - Upload the single PDF CV artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: resume-pdf-cv
-          path: Results/curriculum-vitae.pdf
-          if-no-files-found: error
-          retention-days: 12
-      - name: Step 5.3 - Upload the single PDF Portfolio artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: resume-pdf-portfolio
-          path: Results/portfolio.pdf
-          if-no-files-found: error
-          retention-days: 12
-
-      - name: Step 6.1 - Upload the PDF artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: resume-pdf
-          path: Results/resume.pdf
-          if-no-files-found: error
-          retention-days: 12
-      - name: Step 6.2 - Upload the EPUB artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: resume-epub
-          path: Results/resume.epub
-          if-no-files-found: error
-          retention-days: 12
