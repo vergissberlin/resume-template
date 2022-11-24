@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: resume-pdf-portfolio
-          path: Results/portfolio.pdf
+          path: Results/${{ env.RESUME_FILENAME }}-portfolio.pdf
           if-no-files-found: error
           retention-days: 12
 
