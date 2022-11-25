@@ -119,10 +119,11 @@ jobs:
             ##### Download single files
 
             | Document     | Download |
-            | ------------ | ---- |
+            | ------------ | -------- |
             | Introduction | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-introduction.pdf) | 
-            | CV | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf) | 
-            | Portfolio | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-portfolio.pdf) |
+            | CV           | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf) | 
+            | Portfolio    | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.RESUME_FILENAME }}-portfolio.pdf) |
+
           draft: false
           prerelease: false
 
@@ -133,7 +134,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf-introduction/${{ env.RESUME_FILENAME }}-introduction.pdf
+          asset_path: ./${{ env.RESUME_FILENAME }}-introduction/${{ env.RESUME_FILENAME }}-introduction.pdf
           asset_name: ${{ env.RESUME_FILENAME }}-introduction.pdf
           asset_content_type: application/pdf
       - name: Step 3.2 Upload CV PDF Release Asset
@@ -143,7 +144,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf-curriculum-vitae/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf
+          asset_path: ./${{ env.RESUME_FILENAME }}-curriculum-vitae/${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf
           asset_name: ${{ env.RESUME_FILENAME }}-curriculum-vitae.pdf
           asset_content_type: application/pdf
       - name: Step 4.3 Upload Portfolio PDF Release Asset
@@ -153,7 +154,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume-pdf-portfolio/${{ env.RESUME_FILENAME }}-portfolio.pdf
+          asset_path: ./${{ env.RESUME_FILENAME }}-portfolio/${{ env.RESUME_FILENAME }}-portfolio.pdf
           asset_name: ${{ env.RESUME_FILENAME }}-portfolio.pdf
           asset_content_type: application/pdf
 
