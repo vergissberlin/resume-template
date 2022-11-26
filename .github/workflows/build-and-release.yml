@@ -114,7 +114,7 @@ jobs:
             | PDF | EPUB |
             | --- | ---- |
             | <a href="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.pdf"><img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-pdf.png" alt="Cover for pdf" /></a> | <a href="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.epub"><img width="144" src="https://cdn.githubraw.com/${{ github.repository }}/main/Content/Media/Cover/Cover-epub.png" alt="Cover for epub" /></a> |
-            | [![Badge CV](https://img.shields.io/badge/Download_CV-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.pdf) | [![Badge Epub](https://img.shields.io/badge/Download_EPUB-100000?style=for-the-badge&logo=Adobe&logoColor=FFFFFF&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.epub) |
+            | [![Badge PDF](https://img.shields.io/badge/PDF-resume-100000?style=for-the-badge&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.pdf) | [![Badge Epub](https://img.shields.io/badge/EPUB-resume-100000?style=for-the-badge&labelColor=4E4796&color=DBD7FF)](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/resume-${{ env.RESUME_FILENAME }}.epub) |
             
             ##### Download single files
 
