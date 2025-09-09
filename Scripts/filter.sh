@@ -8,7 +8,7 @@ echo "👉\tFilter characters in \"$1\""
 ## Environment specific replacements commands
 ################################################################################
 
-if [ $CI ]; then
+if [ "$CI" = "true" ]; then
 	sedcmd="sed -i"
 else
 	sedcmd="sed -i ''"
@@ -24,14 +24,14 @@ fi
 $sedcmd 's/>\ \[Introduction\].*//g' $1
 
 # Remove name from title
-$sedcmd 's/–\ \André\ Lademann//g' $1
+$sedcmd 's/–\ .*//g' $1
 
 # Remove badges
 $sedcmd '/\[\!\[PDF\ Download/d' $1
 
 # Remove download link
 $sedcmd 's/## Download//g' $1
-$sedcmd 's/\-\ \Lebenslauf\ \[PDF\ CV//g' $1
+$sedcmd 's/\-\ .*\ \[PDF\ CV//g' $1
 
 # Remove top links from headers
 $sedcmd 's/\[\[↑\]\(\#.*\)\]\ //g' $1

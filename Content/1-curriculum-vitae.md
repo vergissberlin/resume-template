@@ -6,20 +6,20 @@
 
 ## Education
 
-| period      | certificate                             | institution                                                                                |
-|-------------|-----------------------------------------|--------------------------------------------------------------------------------------------|
-| 2013 - 2014 | Master of Science in Computer Science   | [University of Applied Sciences and Arts Northwestern Switzerland](https://www.fhnw.ch/en) |
-| 2010 - 2012 | Bachelor of Science in Computer Science | [University of Applied Sciences and Arts Northwestern Switzerland](https://www.fhnw.ch/en) |
-| 2014 - 2017 | Abitur                                  | Leipzig                                                                                    |
+| period      | certificate                             | institution                                      |
+|-------------|-----------------------------------------|--------------------------------------------------|
+| 2013 - 2014 | Master of Science in Computer Science   | [REPLACE_UNIVERSITY](REPLACE_UNIVERSITY_URL)     |
+| 2010 - 2012 | Bachelor of Science in Computer Science | [REPLACE_UNIVERSITY](REPLACE_UNIVERSITY_URL)     |
+| 2006 - 2010 | High School Diploma                     | Central High School, San Francisco              |
 
 ## Work Experience
 
 | period      | position           | company                                          |
 |-------------|--------------------|--------------------------------------------------|
-| 2017 - 2018 | Software Developer | [SAP](https://www.sap.com)                       |
-| 2018 - 2019 | Software Developer | [SAP](https://www.sap.com)                       |
-| 2019 - 2020 | Software Developer | [SAP](https://www.sap.com)                       |
-| 2020 - 2021 | Software Developer | [Swisscom](https://www.swisscom.ch/en/home.html) |
+| 2017 - 2018 | Software Developer | [REPLACE_COMPANY_1](https://www.techcorp.com)   |
+| 2018 - 2019 | Senior Developer   | [REPLACE_COMPANY_2](https://www.datasolutions.com) |
+| 2019 - 2020 | Lead Developer     | [REPLACE_COMPANY_3](https://www.cloudsystems.com) |
+| 2020 - 2021 | Technical Consultant | [REPLACE_COMPANY_4](https://www.devconsulting.com) |
 
 ## Skills
 
@@ -102,8 +102,8 @@
 
 ## Languages
 
-- German (native)
-- English (fluent)
+- English (native)
+- Spanish (fluent)
 - French (basic)
 
 ## Interests
@@ -117,26 +117,18 @@
 
 ## References
 
-- [LinkedIn](https://www.linkedin.com/in/example/)
-- [Xing](https://www.xing.com/profile/Andre_Lademann/cv)
-- [Stack Overflow](https://stackoverflow.com/users/1040003/andre-lademann)
-- [Twitter](https://twitter.com/example)
-- [Instagram](https://www.instagram.com/example/)
-- [Facebook](https://www.facebook.com/example/)
-- [YouTube](https://www.youtube.com/channel/UCZ9Y9Z9Z9Z9Z9Z9Z9Z9Z9ZQ)
-- [Twitch](https://www.twitch.tv/example)
-- [Spotify](https://open.spotify.com/user/andre.lademann)
-- [Last.fm](https://www.last.fm/user/example)
-- [Goodreads](https://www.goodreads.com/user/show/1040003-andre-lademann)
-- [Letterboxd](https://letterboxd.com/example/)
-- [Steam](https://steamcommunity.com/id/example/)
+- [LinkedIn](REPLACE_LINKEDIN)
+- [Xing](REPLACE_XING)
+- [Stack Overflow](REPLACE_STACKOVERFLOW)
+- [Twitter](REPLACE_TWITTER)
+- [GitHub](REPLACE_GITHUB)
 
 ## Contact
 
-- [Email](mailto:somel@where.io)
-- [Phone](tel:+41791234567)
-- [Address](https://www.google.com/maps/place/Some+Where+Street+123,+1234+Some+Where,+Switzerland)
-- [Website](https://www.example.ch)
-- [GitHub](https://github.com/example)
-- [LinkedIn](https://www.linkedin.com/in/example/)
-- [Xing](https://www.xing.com/profile/Andre_Lademann/cv)
+- [Email](mailto:REPLACE_EMAIL)
+- [Phone](tel:REPLACE_PHONE)
+- [Address](https://www.google.com/maps/place/REPLACE_ADDRESS)
+- [Website](REPLACE_WEBSITE)
+- [GitHub](REPLACE_GITHUB)
+- [LinkedIn](REPLACE_LINKEDIN)
+- [Xing](REPLACE_XING)

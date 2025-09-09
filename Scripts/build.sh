@@ -20,11 +20,11 @@ document_date=$(date +%d.%m.%Y)
 document_date_year=$(date +%Y)
 
 # Get latest git tag
-document_git_tag=$(git describe --tags --abbrev=0)
+document_git_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
 
 # Load dot env file with variables
 set -a
-source .env
+. .env 2>/dev/null || true
 set +a
 
 
@@ -32,7 +32,7 @@ set +a
 ## Environment specific replacements commands
 ################################################################################
 
-if [ $CI ]; then
+if [ "$CI" = "true" ]; then
 	sedcmd="sed -i"
 else
 	sedcmd="sed -i ''"

@@ -4,11 +4,11 @@
 
 ## Contact
 
-- [Email](mailto:somel@where.io)
-- [Phone](tel:+41791234567)
-- [Address](https://www.google.com/maps/place/Some+Where+Street+123,+1234+Some+Where,+Switzerland)
-- [Website](https://www.example.ch)
-- [GitHub](https://github.com/example)
-- [LinkedIn](https://www.linkedin.com/in/example/)
-- [Xing](https://www.xing.com/profile/example/cv)
+- [Email](mailto:REPLACE_EMAIL)
+- [Phone](tel:REPLACE_PHONE)
+- [Address](https://www.google.com/maps/place/REPLACE_ADDRESS)
+- [Website](REPLACE_WEBSITE)
+- [GitHub](REPLACE_GITHUB)
+- [LinkedIn](REPLACE_LINKEDIN)
+- [Xing](REPLACE_XING)
 

@@ -11,8 +11,8 @@ A resume is like a [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Docume
 I am a software developer with a passion for web development. I am currently working as a freelance developer and consultant. 
 I am also a member of the [Open Source Initiative](https://opensource.org/).
 My main focus is on the development of web applications and the integration of web technologies into existing systems.
-I am also interested in the development of mobile applications and the integration of web technologies into existing systems.
-I am also interested in the development of mobile applications and the integration of web technologies into existing systems.
+I am also interested in the development of mobile applications and the integration of modern web technologies into legacy systems.
+I enjoy creating scalable solutions and mentoring development teams.
 
 ## Skills
 
@@ -35,13 +35,13 @@ I am also interested in the development of mobile applications and the integrati
 ### Freelance developer and consultant
 
 - 2019 - Present
-- [example.de](https://example.de)
-- [GitHub](https://github.com/example)
+- [REPLACE_WEBSITE](REPLACE_WEBSITE)
+- [GitHub](REPLACE_GITHUB)
 
 ### Web developer
 
 - 2018 - 2019
-- [example.com](https://example.com)
+- [REPLACE_COMPANY_1](https://example.com)
 - [GitHub](https://github.com/example/example)
 
 ## Main skills
