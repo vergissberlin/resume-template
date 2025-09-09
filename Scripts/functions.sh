@@ -8,7 +8,7 @@
 ## Environment specific replacements commands
 ################################################################################
 
-if [ $CI ]; then
+if [ "$CI" = "true" ]; then
 	sedcmd="sed -i"
 else
 	sedcmd="sed -i ''"
